@@ -20,7 +20,6 @@ import com.baomidou.mybatisplus.core.toolkit.reflect.GenericTypeUtils;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.security.AccessController;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -190,7 +189,7 @@ public final class ReflectionKit {
      * @return 返回设置后的对象
      */
     public static <T extends AccessibleObject> T setAccessible(T object) {
-        return AccessController.doPrivileged(new SetAccessibleAction<>(object));
+        return new SetAccessibleAction<>(object).run();
     }
 
 }

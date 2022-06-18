@@ -49,6 +49,6 @@ public class SelectBatchByIds extends AbstractMethod {
                 sqlSelectColumns(tableInfo, false), tableInfo.getTableName(), tableInfo.getKeyColumn(),
                 SqlScriptUtils.convertForeach("#{item}", COLL, null, "item", COMMA),
                 tableInfo.getLogicDeleteSql(true, true)), Object.class);
-        return addSelectMappedStatementForTable(mapperClass, getMethod(sqlMethod), sqlSource, tableInfo);
+        return addSelectMappedStatementForTable(mapperClass, this.methodName, sqlSource, tableInfo);
     }
 }

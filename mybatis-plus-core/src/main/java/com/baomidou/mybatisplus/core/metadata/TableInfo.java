@@ -559,7 +559,7 @@ public class TableInfo implements Constants {
     @SuppressWarnings("unchecked")
     public <T> T newInstance() {
         Constructor<?> defaultConstructor = reflector.getDefaultConstructor();
-        if (!defaultConstructor.isAccessible()) {
+        if (!defaultConstructor.canAccess(defaultConstructor)) {
             defaultConstructor.setAccessible(true);
         }
         try {

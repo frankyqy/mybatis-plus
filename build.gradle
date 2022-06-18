@@ -2,20 +2,20 @@ import java.time.LocalDateTime
 
 allprojects {
     group = 'com.baomidou'
-    version = "3.5.2"
+    version = "3.5.2-jdk17"
 }
 
 ext {
     configuration = [
-        javaVersion = JavaVersion.VERSION_1_8
+        javaVersion = JavaVersion.VERSION_17
     ]
 
     libraries = [
         mybatisVersion = '3.5.10',
         mybatisSpringVersion = '2.0.7',
         mybatisSpringBootStarterVersion = '2.2.2',
-        springVersion = '5.3.15',
-        springBootVersion = '2.5.3',
+        springVersion = '6.0.0-M4',
+        springBootVersion = '3.0.0-M3',
         jsqlparserVersion = '4.4',
         junitVersion = '5.7.2',
     ]
@@ -86,7 +86,8 @@ subprojects {
     repositories {
         mavenLocal()
         maven { url "https://maven.aliyun.com/repository/public" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://repo.spring.io/milestone" }
+//        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         mavenCentral()
     }
 

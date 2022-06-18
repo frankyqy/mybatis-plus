@@ -49,7 +49,7 @@ public class DeleteBatchByIds extends AbstractMethod {
         if (tableInfo.isWithLogicDelete()) {
             sql = logicDeleteScript(tableInfo, sqlMethod);
             SqlSource sqlSource = languageDriver.createSqlSource(configuration, sql, Object.class);
-            return addUpdateMappedStatement(mapperClass, modelClass, getMethod(sqlMethod), sqlSource);
+            return addUpdateMappedStatement(mapperClass, modelClass, this.methodName, sqlSource);
         } else {
             sqlMethod = SqlMethod.DELETE_BATCH_BY_IDS;
             sql = String.format(sqlMethod.getSql(), tableInfo.getTableName(), tableInfo.getKeyColumn(),
@@ -58,7 +58,7 @@ public class DeleteBatchByIds extends AbstractMethod {
                         "#{item}", "#{item." + tableInfo.getKeyProperty() + "}"),
                     COLL, null, "item", COMMA));
             SqlSource sqlSource = languageDriver.createSqlSource(configuration, sql, Object.class);
-            return this.addDeleteMappedStatement(mapperClass, getMethod(sqlMethod), sqlSource);
+            return this.addDeleteMappedStatement(mapperClass, this.methodName, sqlSource);
         }
     }
 
